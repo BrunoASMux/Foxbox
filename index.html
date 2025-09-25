@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .trend-chart-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="p-6">
+
+    <!-- Header -->
+    <header class="bg-white p-6 rounded-xl shadow-md mb-6 flex flex-col md:flex-row items-center justify-between">
+        <div class="flex items-center mb-4 md:mb-0">
+            <h1 class="text-3xl font-bold text-gray-800 mr-4">Admin Dashboard</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
+            <div class="relative w-full sm:w-auto">
+                <select class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                    <option>Last 30 Days</option>
+                    <option>Last Week</option>
+                    <option>Last 90 Days</option>
+                </select>
+            </div>
+            <div class="relative w-full sm:w-auto">
+                <select class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                    <option>All Users</option>
+                    <option>Administrators</option>
+                    <option>Clinicians</option>
+                    <option>Analysts</option>
+                </select>
+            </div>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition-colors duration-200 flex items-center w-full sm:w-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Export CSV
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Panel -->
+    <main class="space-y-6">
+        <!-- Metrics Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            <!-- Card 1: Active Users -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-gray-500">Active Users</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <p class="text-3xl font-bold text-gray-900">1,245</p>
+                <p class="text-sm text-green-500 mt-1">+12% vs. previous month</p>
+            </div>
+
+            <!-- Card 2: Sessions -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-gray-500">Sessions</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <p class="text-3xl font-bold text-gray-900">4,321</p>
+                <p class="text-sm text-yellow-500 mt-1">+8% vs. previous month</p>
+            </div>
+
+            <!-- Card 3: Average Session Duration -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-gray-500">Average Session Duration</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <p class="text-3xl font-bold text-gray-900">4:23</p>
+                <p class="text-sm text-indigo-500 mt-1">20% longer than average</p>
+            </div>
+
+            <!-- Card 4: Feature Usage -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-gray-500">Most Used Feature</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20V10"></path>
+                        <path d="M18 20V4"></path>
+                        <path d="M6 20v-4"></path>
+                    </svg>
+                </div>
+                <p class="text-xl font-bold text-gray-900">Appointments Module</p>
+                <p class="text-sm text-purple-500 mt-1">65% of total usage</p>
+            </div>
+
+            <!-- Card 5: Exports -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-gray-500">CSV Exports</h3>
+                    <svg xmlns="http://www.w3.0000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <line x1="12" y1="13" x2="12" y2="13"></line>
+                    </svg>
+                </div>
+                <p class="text-3xl font-bold text-gray-900">32</p>
+                <p class="text-sm text-gray-500 mt-1">Total exports</p>
+            </div>
+        </div>
+
+        <!-- Trend Charts Section -->
+        <div class="bg-white p-6 rounded-xl shadow-md max-w-4xl mx-auto">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Usage Trends</h3>
+                <select class="block px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                    <option>Sessions</option>
+                    <option>Active Users</option>
+                    <option>Feature Usage</option>
+                </select>
+            </div>
+            <div class="h-64 flex items-center justify-center bg-gray-100 rounded-lg border border-dashed border-gray-300 relative">
+                <svg id="trend-chart-svg" class="w-full h-full" viewBox="0 0 120 120" preserveAspectRatio="none">
+                    <!-- This content will be replaced by JavaScript -->
+                </svg>
+            </div>
+        </div>
+
+        <!-- Detail Table -->
+        <div class="bg-white p-6 rounded-xl shadow-md">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">User Activity Details</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left table-auto">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">User ID</th>
+                            <th class="py-3 px-6 text-left">Recent Activity</th>
+                            <th class="py-3 px-6 text-left">Last Access</th>
+                            <th class="py-3 px-6 text-left">Subscription Status</th>
+                            <th class="py-3 px-6 text-center">User Type</th>
+                            <th class="py-3 px-6 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm font-medium">
+                        <!-- Sample Row 1 -->
+                        <tr class="border-b border-gray-200 hover:bg-gray-50">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">#4567</td>
+                            <td class="py-3 px-6 text-left">Created an appointment in the Appointments Module</td>
+                            <td class="py-3 px-6 text-left">2 hours ago</td>
+                            <td class="py-3 px-6 text-left"><span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Active</span></td>
+                            <td class="py-3 px-6 text-center">Clinician</td>
+                            <td class="py-3 px-6 text-center">
+                                <button class="bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 text-xs">Export</button>
+                            </td>
+                        </tr>
+                        <!-- Sample Row 2 -->
+                        <tr class="border-b border-gray-200 hover:bg-gray-50">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">#8901</td>
+                            <td class="py-3 px-6 text-left">Accessed the Documents Module</td>
+                            <td class="py-3 px-6 text-left">1 day ago</td>
+                            <td class="py-3 px-6 text-left"><span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Active</span></td>
+                            <td class="py-3 px-6 text-center">Clinician</td>
+                            <td class="py-3 px-6 text-center">
+                                <button class="bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 text-xs">Export</button>
+                            </td>
+                        </tr>
+                        <!-- Sample Row 3 -->
+                        <tr class="border-b border-gray-200 hover:bg-gray-50">
+                            <td class="py-3 px-6 text-left whitespace-nowapa">#2345</td>
+                            <td class="py-3 px-6 text-left">Completed a profile form</td>
+                            <td class="py-3 px-6 text-left">3 days ago</td>
+                            <td class="py-3 px-6 text-left"><span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Inactive</span></td>
+                            <td class="py-3 px-6 text-center">Analyst</td>
+                            <td class="py-3 px-6 text-center">
+                                <button class="bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 text-xs">Export</button>
+                            </td>
+                        </tr>
+                        <!-- Sample Row 4 (New) -->
+                        <tr class="border-b border-gray-200 hover:bg-gray-50">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">#5678</td>
+                            <td class="py-3 px-6 text-left">Updated a patient record</td>
+                            <td class="py-3 px-6 text-left">5 hours ago</td>
+                            <td class="py-3 px-6 text-left"><span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Active</span></td>
+                            <td class="py-3 px-6 text-center">Clinician</td>
+                            <td class="py-3 px-6 text-center">
+                                <button class="bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 text-xs">Export</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function generateChart() {
+            const svg = document.getElementById('trend-chart-svg');
+            // Simulated data to reflect 12% growth from a lower starting point
+            const data = [1090, 1105, 1120, 1145, 1160, 1180, 1195, 1210, 1225, 1245];
+            const numPoints = data.length;
+            const yMax = 1300;
+            const yMin = 900;
+            const yRange = yMax - yMin;
+            
+            // Polyline points (with 10 padding on the edges)
+            const paddingX = 15;
+            const paddingY = 20;
+            const chartWidth = 100 - paddingX;
+            const chartHeight = 100 - paddingY;
+
+            const points = data.map((value, index) => {
+                const x = paddingX + (index / (numPoints - 1)) * chartWidth;
+                const y = paddingY + (1 - ((value - yMin) / yRange)) * chartHeight;
+                return `${x},${y}`;
+            }).join(' ');
+
+            let svgContent = '';
+            
+            // Grid lines (horizontal)
+            const yGridLabels = [900, 1000, 1100, 1200, 1300];
+            yGridLabels.forEach(label => {
+                const y = paddingY + (1 - ((label - yMin) / yRange)) * chartHeight;
+                svgContent += `<line x1="${paddingX}" y1="${y}" x2="100" y2="${y}" stroke="#d1d5db" stroke-dasharray="1,2" stroke-width="0.5" />`;
+            });
+
+            // Chart polyline
+            svgContent += `<polyline points="${points}" fill="none" stroke="#6366f1" stroke-width="2" />`;
+            
+            // Circles on the points
+            data.forEach((value, index) => {
+                const x = paddingX + (index / (numPoints - 1)) * chartWidth;
+                const y = paddingY + (1 - ((value - yMin) / yRange)) * chartHeight;
+                svgContent += `<circle cx="${x}" cy="${y}" r="2" fill="#6366f1" />`;
+            });
+
+            // Y-axis labels
+            yGridLabels.forEach(label => {
+                const y = paddingY + (1 - ((label - yMin) / yRange)) * chartHeight;
+                svgContent += `<text x="${paddingX - 2}" y="${y + 1.5}" font-size="4" fill="#6b7280" text-anchor="end">${label}</text>`;
+            });
+
+            // X-axis labels (first day, middle day, and last day)
+            const xLabels = ['Day 1', 'Day 15', 'Day 30'];
+            const xLabelPositions = [0, Math.floor(numPoints / 2), numPoints - 1];
+            xLabelPositions.forEach((index, i) => {
+                const x = paddingX + (index / (numPoints - 1)) * chartWidth;
+                svgContent += `<text x="${x}" y="115" font-size="4" fill="#6b7280" text-anchor="middle">${xLabels[i]}</text>`;
+            });
+            
+            svg.innerHTML = svgContent;
+        }
+
+        window.onload = generateChart;
+        window.onresize = generateChart;
+    </script>
+</body>
+</html>
